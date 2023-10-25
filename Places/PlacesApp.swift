@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct PlacesApp: App {
+
     var body: some Scene {
+        let locationViewModel = LocationViewModel(service: LocationService())
         WindowGroup {
-            ContentView()
+            LocationView(viewModel: locationViewModel)
         }
     }
 }
