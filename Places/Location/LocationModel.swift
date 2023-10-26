@@ -11,6 +11,7 @@ struct Locations: Codable {
 
 struct Location: Hashable, Codable {
     let name: String?
+    let subtitle: String?
     let lat: Double
     let long: Double
 }

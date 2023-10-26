@@ -21,7 +21,6 @@ class LocationViewModel: ObservableObject {
     func getLocations() async {
         guard let data = try? await service.getLocations() else {
             self.locations = []
-            // TODO: error flow
             return
         }
         self.locations = data

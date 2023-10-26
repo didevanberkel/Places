@@ -13,7 +13,6 @@ struct LocationView: View {
     @ObservedObject var viewModel: LocationViewModel
 
     @State private var showModal = false
-    @State private var locations = [Location]()
 
     var body: some View {
         NavigationStack {
@@ -24,13 +23,8 @@ struct LocationView: View {
             }
             .navigationTitle(Strings.locations)
             .navigationBarItems(trailing: addButton)
-            .onChange(of: locations) {
-                if let firstLocation = locations.first, locations.count == 1 {
-                    viewModel.locations.append(firstLocation)
-                }
-            }
             .sheet(isPresented: $showModal) {
-                SearchLocationView(viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter()), locations: $locations)
+                SearchLocationView(viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter()), locations: $viewModel.locations)
             }
         }
         .task {

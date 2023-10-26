@@ -21,23 +21,17 @@ struct SearchLocationView: View {
                 Images.magnifier
                 TextField(Strings.searchLocation, text: $search)
                     .autocorrectionDisabled()
-                    .onSubmit {
-                        Task {
-                            await viewModel.searchLocations(text: search)
-                            locations = viewModel.locations
-                        }
-                    }
             }
             .modifier(TextFieldGrayBackgroundColor())
             Spacer()
             List {
-                ForEach(viewModel.searchResults, id: \.self) { completion in
-                    Button(action: { didTapOnCompletion(completion) }) {
+                ForEach(viewModel.locations, id: \.self) { location in
+                    Button(action: { didTapOnCompletion(location) }) {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(completion.title)
+                            Text(location.name ?? "")
                                 .font(.headline)
                                 .fontDesign(.rounded)
-                            Text(completion.subtitle)
+                            Text(location.subtitle ?? "")
                         }
                     }
                     .listRowBackground(Color.clear)
@@ -56,11 +50,8 @@ struct SearchLocationView: View {
         .presentationBackgroundInteraction(.enabled(upThrough: .large))
     }
 
-    private func didTapOnCompletion(_ completion: SearchResult) {
-        Task {
-            await viewModel.searchFirstLocation(text: "\(completion.title) \(completion.subtitle)")
-            locations = viewModel.locations
-        }
+    private func didTapOnCompletion(_ completion: Location) {
+        locations.append(completion)
     }
 }
 
@@ -77,6 +68,6 @@ struct TextFieldGrayBackgroundColor: ViewModifier {
 #Preview {
     SearchLocationView(
         viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter()),
-        locations: .constant([Location(name: "Deventer", lat: 123.0, long: 1234.0)])
+        locations: .constant([Location(name: "Title", subtitle: "Subtitle", lat: 123.0, long: 1234.0)])
     )
 }
