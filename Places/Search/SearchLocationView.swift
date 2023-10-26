@@ -14,24 +14,22 @@ struct SearchLocationView: View {
     @Binding var locations: [Location]
 
     @State private var search: String = ""
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack {
             searchLocationTextField
             searchLocationList
         }
+        .padding()
         .onChange(of: search) {
             viewModel.update(with: search)
         }
-        .padding()
-        .interactiveDismissDisabled()
-        .presentationDetents([.height(200), .large])
-        .presentationBackground(.regularMaterial)
-        .presentationBackgroundInteraction(.enabled(upThrough: .large))
     }
 
     private func didTapOnCompletion(_ completion: Location) {
         locations.append(completion)
+        dismiss()
     }
 }
 
