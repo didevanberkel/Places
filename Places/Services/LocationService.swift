@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIError: Error {
-    case invalidUrl, requestError, decodingError, statusNotOk
+    case requestError, statusCodeError, decodeError
 }
 
 protocol LocationServiceProtocol {
@@ -22,10 +22,10 @@ struct LocationService: LocationServiceProtocol {
             throw APIError.requestError
         }
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.statusNotOk
+            throw APIError.statusCodeError
         }
         guard let result = try? JSONDecoder().decode(Locations.self, from: data) else {
-            throw APIError.decodingError
+            throw APIError.decodeError
         }
         return result.locations
     }
