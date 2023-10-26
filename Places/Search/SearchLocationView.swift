@@ -18,8 +18,8 @@ struct SearchLocationView: View {
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "magnifyingglass")
-                TextField("Search for a location", text: $search)
+                Images.magnifier
+                TextField(Strings.searchLocation, text: $search)
                     .autocorrectionDisabled()
                     .onSubmit {
                         Task {

@@ -11,6 +11,9 @@
 		AA22F43D2AE988F200587F46 /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22F43C2AE988F200587F46 /* SearchLocationView.swift */; };
 		AA22F43F2AE9890000587F46 /* SearchLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22F43E2AE9890000587F46 /* SearchLocationViewModel.swift */; };
 		AA22F4412AE9890C00587F46 /* SearchLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22F4402AE9890C00587F46 /* SearchLocationModel.swift */; };
+		AAC264CE2AEA7D6B00B8627A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AAC264CD2AEA7D6B00B8627A /* Localizable.xcstrings */; };
+		AAC264D12AEA7ED200B8627A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC264D02AEA7ED200B8627A /* Strings.swift */; };
+		AAC264D32AEA7FA400B8627A /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC264D22AEA7FA400B8627A /* Images.swift */; };
 		AAD8BB012AE944F7008FE3D7 /* PlacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8BB002AE944F7008FE3D7 /* PlacesApp.swift */; };
 		AAD8BB032AE944F7008FE3D7 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD8BB022AE944F7008FE3D7 /* LocationView.swift */; };
 		AAD8BB052AE944FA008FE3D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */; };
@@ -45,6 +48,9 @@
 		AA22F43C2AE988F200587F46 /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		AA22F43E2AE9890000587F46 /* SearchLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewModel.swift; sourceTree = "<group>"; };
 		AA22F4402AE9890C00587F46 /* SearchLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationModel.swift; sourceTree = "<group>"; };
+		AAC264CD2AEA7D6B00B8627A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		AAC264D02AEA7ED200B8627A /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		AAC264D22AEA7FA400B8627A /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		AAD8BAFD2AE944F7008FE3D7 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD8BB002AE944F7008FE3D7 /* PlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesApp.swift; sourceTree = "<group>"; };
 		AAD8BB022AE944F7008FE3D7 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -131,8 +137,11 @@
 				AA22F4382AE985BD00587F46 /* Extensions */,
 				AAD8BB322AE952B1008FE3D7 /* Services */,
 				AAD8BB002AE944F7008FE3D7 /* PlacesApp.swift */,
-				AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */,
 				AAD8BB062AE944FA008FE3D7 /* Preview Content */,
+				AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */,
+				AAC264CD2AEA7D6B00B8627A /* Localizable.xcstrings */,
+				AAC264D22AEA7FA400B8627A /* Images.swift */,
+				AAC264D02AEA7ED200B8627A /* Strings.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -266,6 +275,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = AAD8BAF42AE944F7008FE3D7;
 			productRefGroup = AAD8BAFE2AE944F7008FE3D7 /* Products */;
@@ -286,6 +296,7 @@
 			files = (
 				AAD8BB082AE944FA008FE3D7 /* Preview Assets.xcassets in Resources */,
 				AAD8BB052AE944FA008FE3D7 /* Assets.xcassets in Resources */,
+				AAC264CE2AEA7D6B00B8627A /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +323,8 @@
 			files = (
 				AAD8BB032AE944F7008FE3D7 /* LocationView.swift in Sources */,
 				AA22F4412AE9890C00587F46 /* SearchLocationModel.swift in Sources */,
+				AAC264D12AEA7ED200B8627A /* Strings.swift in Sources */,
+				AAC264D32AEA7FA400B8627A /* Images.swift in Sources */,
 				AAD8BB2C2AE94727008FE3D7 /* LocationService.swift in Sources */,
 				AAD8BB012AE944F7008FE3D7 /* PlacesApp.swift in Sources */,
 				AA22F43F2AE9890000587F46 /* SearchLocationViewModel.swift in Sources */,

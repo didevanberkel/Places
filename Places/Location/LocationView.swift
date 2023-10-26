@@ -19,10 +19,10 @@ struct LocationView: View {
         NavigationStack {
             List {
                 ForEach(viewModel.locations, id: \.self) { location in
-                    Text(location.name ?? "Unknown name")
+                    Text(location.name ?? Strings.unknownName)
                 }
             }
-            .navigationTitle("Locations")
+            .navigationTitle(Strings.locations)
             .navigationBarItems(trailing: addButton)
             .onChange(of: locations) {
                 if let firstLocation = locations.first, locations.count == 1 {
@@ -42,7 +42,7 @@ struct LocationView: View {
         Button(action: {
             self.showModal.toggle()
         }) {
-            Text("Show Modal")
+            Text(Strings.add)
         }
     }
 }
