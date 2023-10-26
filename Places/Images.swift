@@ -9,4 +9,5 @@ import SwiftUI
 
 struct Images {
     static let magnifier = Image(systemName: "magnifyingglass")
+    static let add = Image(systemName: "plus")
 }

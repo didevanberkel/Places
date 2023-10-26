@@ -17,28 +17,8 @@ struct SearchLocationView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Images.magnifier
-                TextField(Strings.searchLocation, text: $search)
-                    .autocorrectionDisabled()
-            }
-            .modifier(TextFieldGrayBackgroundColor())
-            Spacer()
-            List {
-                ForEach(viewModel.locations, id: \.self) { location in
-                    Button(action: { didTapOnCompletion(location) }) {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(location.name ?? "")
-                                .font(.headline)
-                                .fontDesign(.rounded)
-                            Text(location.subtitle ?? "")
-                        }
-                    }
-                    .listRowBackground(Color.clear)
-                }
-            }
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
+            searchLocationTextField
+            searchLocationList
         }
         .onChange(of: search) {
             viewModel.update(with: search)
@@ -55,13 +35,30 @@ struct SearchLocationView: View {
     }
 }
 
-struct TextFieldGrayBackgroundColor: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(12)
-            .background(.gray.opacity(0.1))
-            .cornerRadius(8)
-            .foregroundColor(.primary)
+extension SearchLocationView {
+    private var searchLocationTextField: some View {
+        HStack {
+            Images.magnifier
+            TextField(Strings.searchLocation, text: $search)
+                .autocorrectionDisabled()
+        }
+        .textFieldBackground()
+    }
+
+    private var searchLocationList: some View {
+        List {
+            ForEach(viewModel.locations, id: \.self) { location in
+                Button(action: { didTapOnCompletion(location) }) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(location.name ?? "")
+                            .font(.headline)
+                            .fontDesign(.rounded)
+                        Text(location.subtitle ?? "")
+                    }
+                }
+            }
+        }
+        .listStyle(.plain)
     }
 }
 

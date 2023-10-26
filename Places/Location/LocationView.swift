@@ -36,7 +36,7 @@ struct LocationView: View {
         Button(action: {
             self.showModal.toggle()
         }) {
-            Text(Strings.add)
+            Images.add
         }
     }
 }

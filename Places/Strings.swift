@@ -8,7 +8,6 @@
 import Foundation
 
 struct Strings {
-    static let add = String(localized: "add")
     static let locations = String(localized: "locations")
     static let searchLocation = String(localized: "searchLocation")
     static let unknownName = String(localized: "unknownName")
