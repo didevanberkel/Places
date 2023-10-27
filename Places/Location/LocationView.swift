@@ -18,7 +18,7 @@ struct LocationView: View {
         NavigationStack {
             List {
                 ForEach(viewModel.locations, id: \.self) { location in
-                    Text(location.name ?? Strings.unknownName)
+                    Link(location.name ?? Strings.unknownName, destination: URL.wikipedia(location: location))
                 }
             }
             .navigationTitle(Strings.locations)
