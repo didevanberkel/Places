@@ -23,7 +23,7 @@ final class LocationViewModelTests: XCTestCase {
         sut = nil
     }
 
-    func testGetLocations() async {
+    func testGetLocationsSuccess() async {
         // Given
         mockLocationService.getLocationsResult = [
             Location(
@@ -44,5 +44,18 @@ final class LocationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.locations[0].subtitle, "subtitle")
         XCTAssertEqual(sut.locations[0].lat, 100.0)
         XCTAssertEqual(sut.locations[0].long, 200.0)
+    }
+
+    func testGetLocationsFailure() async {
+        // Given
+        mockLocationService.getLocationsResult = nil
+
+        // When
+        await sut.getLocations()
+
+        // Then
+        XCTAssertTrue(mockLocationService.getLocationsCalled)
+        XCTAssertEqual(mockLocationService.getLocationsCallsCount, 1)
+        XCTAssertTrue(sut.locations.isEmpty)
     }
 }

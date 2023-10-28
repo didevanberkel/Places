@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1E31EF2AECFDC80001206D /* SearchLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E31EE2AECFDC80001206D /* SearchLocationService.swift */; };
+		AA1E31F12AECFF650001206D /* MockSearchLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E31F02AECFF650001206D /* MockSearchLocationService.swift */; };
 		AA22F43A2AE985D600587F46 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22F4392AE985D600587F46 /* URL+Extension.swift */; };
 		AA22F43D2AE988F200587F46 /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22F43C2AE988F200587F46 /* SearchLocationView.swift */; };
 		AA22F43F2AE9890000587F46 /* SearchLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA22F43E2AE9890000587F46 /* SearchLocationViewModel.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA1E31EE2AECFDC80001206D /* SearchLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationService.swift; sourceTree = "<group>"; };
+		AA1E31F02AECFF650001206D /* MockSearchLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchLocationService.swift; sourceTree = "<group>"; };
 		AA22F4392AE985D600587F46 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		AA22F43C2AE988F200587F46 /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		AA22F43E2AE9890000587F46 /* SearchLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewModel.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				AA22F4402AE9890C00587F46 /* SearchLocationModel.swift */,
 				AA22F43C2AE988F200587F46 /* SearchLocationView.swift */,
 				AA22F43E2AE9890000587F46 /* SearchLocationViewModel.swift */,
+				AA1E31EE2AECFDC80001206D /* SearchLocationService.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			children = (
 				AAC264D82AEAB2F800B8627A /* MockLocationService.swift */,
 				AAC264DE2AEAE27600B8627A /* MockLocalSearchCompleter.swift */,
+				AA1E31F02AECFF650001206D /* MockSearchLocationService.swift */,
 				AAC264E22AEAEADD00B8627A /* Locations.json */,
 			);
 			path = Mocks;
@@ -175,7 +181,6 @@
 				AA22F43B2AE988B900587F46 /* Search */,
 				AAD8BB2A2AE946F2008FE3D7 /* Location */,
 				AA22F4382AE985BD00587F46 /* Extensions */,
-				AAD8BB322AE952B1008FE3D7 /* Services */,
 				AAD8BB002AE944F7008FE3D7 /* PlacesApp.swift */,
 				AAD8BB062AE944FA008FE3D7 /* Preview Content */,
 				AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */,
@@ -219,19 +224,12 @@
 		AAD8BB2A2AE946F2008FE3D7 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				AAD8BB2B2AE94727008FE3D7 /* LocationService.swift */,
 				AAD8BB302AE95285008FE3D7 /* LocationModel.swift */,
 				AAD8BB022AE944F7008FE3D7 /* LocationView.swift */,
 				AAD8BB2E2AE9484F008FE3D7 /* LocationViewModel.swift */,
 			);
 			path = Location;
-			sourceTree = "<group>";
-		};
-		AAD8BB322AE952B1008FE3D7 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				AAD8BB2B2AE94727008FE3D7 /* LocationService.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD8BB032AE944F7008FE3D7 /* LocationView.swift in Sources */,
+				AA1E31EF2AECFDC80001206D /* SearchLocationService.swift in Sources */,
 				AA22F4412AE9890C00587F46 /* SearchLocationModel.swift in Sources */,
 				AAC264D12AEA7ED200B8627A /* Strings.swift in Sources */,
 				AAC264D52AEAA7F100B8627A /* TextFieldBackground.swift in Sources */,
@@ -388,6 +387,7 @@
 			files = (
 				AAC264E42AEAEB9A00B8627A /* XCTestCase+Extension.swift in Sources */,
 				AAC264D92AEAB2F800B8627A /* MockLocationService.swift in Sources */,
+				AA1E31F12AECFF650001206D /* MockSearchLocationService.swift in Sources */,
 				AAD8BB122AE944FA008FE3D7 /* LocationViewModelTests.swift in Sources */,
 				AAC264DF2AEAE27600B8627A /* MockLocalSearchCompleter.swift in Sources */,
 				AAC264E12AEAE90100B8627A /* LocationModelTests.swift in Sources */,

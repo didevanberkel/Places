@@ -24,7 +24,7 @@ struct LocationView: View {
             .navigationTitle(Strings.locations)
             .navigationBarItems(trailing: addButton)
             .sheet(isPresented: $showModal) {
-                SearchLocationView(viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter()), locations: $viewModel.locations)
+                SearchLocationView(viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter(), service: SearchLocationService()), locations: $viewModel.locations)
             }
         }
         .task {

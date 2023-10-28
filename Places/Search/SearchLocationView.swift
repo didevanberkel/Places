@@ -69,7 +69,7 @@ extension SearchLocationView {
 
 #Preview {
     SearchLocationView(
-        viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter()),
+        viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter(), service: SearchLocationService()),
         locations: .constant([Location(name: "Title", subtitle: "Subtitle", lat: 123.0, long: 1234.0)])
     )
 }
