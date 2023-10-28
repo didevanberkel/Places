@@ -11,16 +11,16 @@ import XCTest
 @MainActor
 final class LocationRouterTests: XCTestCase {
     private var sut: LocationRouter!
-
+    
     override func setUp() async throws {
         sut = LocationRouter()
     }
-
+    
     override func tearDown() async throws {
         sut = nil
     }
-
-    func testSearch() {
+    
+    func testSearchForLocation() {
         // Given
         let locations = [
             Location(
@@ -30,10 +30,10 @@ final class LocationRouterTests: XCTestCase {
                 long: 200.0
             )
         ]
-
+        
         // When
         let view = sut.search(for: .constant(locations))
-
+        
         // Then
         XCTAssertNotNil(view)
         XCTAssertEqual(view.locations[0].title, "title")

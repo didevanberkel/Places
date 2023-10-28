@@ -9,7 +9,7 @@
 import MapKit
 
 final class MockSearchLocationService: SearchLocationServiceProtocol {
-
+    
     var getCoordinatesCallsCount = 0
     var getCoordinatesCalled: Bool {
         getCoordinatesCallsCount > 0

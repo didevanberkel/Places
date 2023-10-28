@@ -5,16 +5,16 @@
 //  Created by Dide van Berkel on 25/10/2023.
 //
 
+import MapKit
 import XCTest
 @testable import Places
-import MapKit
 
 @MainActor
 final class LocationViewModelTests: XCTestCase {
     private var mockLocationRouter: MockLocationRouter!
     private var mockLocationService: MockLocationService!
     private var sut: LocationViewModel!
-
+    
     override func setUp() async throws {
         mockLocationRouter = MockLocationRouter()
         mockLocationService = MockLocationService()
@@ -23,13 +23,13 @@ final class LocationViewModelTests: XCTestCase {
             service: mockLocationService
         )
     }
-
+    
     override func tearDown() async throws {
         mockLocationRouter = nil
         mockLocationService = nil
         sut = nil
     }
-
+    
     func testGetLocationsSuccess() async {
         // Given
         mockLocationService.getLocationsResult = [
@@ -40,10 +40,10 @@ final class LocationViewModelTests: XCTestCase {
                 long: 200.0
             )
         ]
-
+        
         // When
         await sut.getLocations()
-
+        
         // Then
         XCTAssertTrue(mockLocationService.getLocationsCalled)
         XCTAssertEqual(mockLocationService.getLocationsCallsCount, 1)
@@ -52,22 +52,22 @@ final class LocationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.locations[0].lat, 100.0)
         XCTAssertEqual(sut.locations[0].long, 200.0)
     }
-
+    
     func testGetLocationsFailure() async {
         // Given
         mockLocationService.getLocationsResult = nil
-
+        
         // When
         await sut.getLocations()
-
+        
         // Then
         XCTAssertTrue(mockLocationService.getLocationsCalled)
         XCTAssertEqual(mockLocationService.getLocationsCallsCount, 1)
         XCTAssertEqual(mockLocationService.getLocationsReceivedRequest?.absoluteString, "https://raw.githubusercontent.com/abnamrocoesd/assignment-ios/main/locations.json")
         XCTAssertTrue(sut.locations.isEmpty)
     }
-
-    func testSearch() {
+    
+    func testSearchForLocation() {
         // Given
         let locations = [
             Location(
@@ -84,10 +84,10 @@ final class LocationViewModelTests: XCTestCase {
             ),
             locations: .constant(locations)
         )
-
+        
         // When
         let view = sut.search(for: .constant(locations))
-
+        
         // Then
         XCTAssertNotNil(view)
         XCTAssertEqual(view.locations[0].title, "title")

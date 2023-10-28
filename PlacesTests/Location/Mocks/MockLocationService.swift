@@ -9,7 +9,7 @@ import Foundation
 @testable import Places
 
 final class MockLocationService: LocationServiceProtocol {
-
+    
     var getLocationsCallsCount = 0
     var getLocationsCalled: Bool {
         getLocationsCallsCount > 0

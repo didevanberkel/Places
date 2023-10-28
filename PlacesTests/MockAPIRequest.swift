@@ -24,4 +24,3 @@ final class MockAPIRequest: APIRequestProtocol {
         return getResult
     }
 }
-

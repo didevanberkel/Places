@@ -14,7 +14,7 @@ protocol LocationRouterProtocol {
 }
 
 struct LocationRouter: LocationRouterProtocol {
-
+    
     func search(for locations: Binding<[Location]>) -> SearchLocationView {
         SearchLocationView(
             viewModel: SearchLocationViewModel(
@@ -25,4 +25,3 @@ struct LocationRouter: LocationRouterProtocol {
         )
     }
 }
-

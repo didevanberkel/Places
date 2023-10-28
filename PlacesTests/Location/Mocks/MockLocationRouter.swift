@@ -16,7 +16,7 @@ final class MockLocationRouter: LocationRouterProtocol {
     }
     var searchReceivedLocations: Binding<[Location]>?
     var searchResult: SearchLocationView?
-
+    
     func search(for locations: Binding<[Location]>) -> SearchLocationView {
         searchCallsCount += 1
         searchReceivedLocations = locations

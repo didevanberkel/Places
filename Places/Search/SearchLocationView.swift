@@ -40,7 +40,7 @@ extension SearchLocationView {
 
     private var searchLocationList: some View {
         List {
-            ForEach(viewModel.searchResults, id: \.self) { location in
+            ForEach(viewModel.searchResults) { location in
                 Button(action: { didTapOnLocation(location) }) {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(location.title)

@@ -16,9 +16,9 @@ protocol LocationServiceProtocol {
 }
 
 struct LocationService: LocationServiceProtocol {
-    
+
     let apiRequest: APIRequestProtocol
-    
+
     func getLocations(request: URL) async throws -> [Location] {
         let result = try await apiRequest.get(request: request)
         switch result {

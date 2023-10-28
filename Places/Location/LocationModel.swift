@@ -17,7 +17,7 @@ struct Location: Identifiable, Codable {
     let subtitle: String?
     let lat: Double
     let long: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case title = "name"
         case subtitle

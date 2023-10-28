@@ -228,13 +228,13 @@
 				AA22F43B2AE988B900587F46 /* Search */,
 				AA3C9FA82AED460000BDAAAE /* Service */,
 				AA22F4382AE985BD00587F46 /* Extensions */,
+				AAC264D62AEAA8AE00B8627A /* ViewModifiers */,
 				AAD8BB002AE944F7008FE3D7 /* PlacesApp.swift */,
 				AAD8BB062AE944FA008FE3D7 /* Preview Content */,
 				AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */,
 				AAC264CD2AEA7D6B00B8627A /* Localizable.xcstrings */,
 				AAC264D22AEA7FA400B8627A /* Images.swift */,
 				AAC264D02AEA7ED200B8627A /* Strings.swift */,
-				AAC264D62AEAA8AE00B8627A /* ViewModifiers */,
 			);
 			path = Places;
 			sourceTree = "<group>";

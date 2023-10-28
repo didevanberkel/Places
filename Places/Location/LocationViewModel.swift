@@ -23,7 +23,7 @@ final class LocationViewModel: ObservableObject {
         self.router = router
         self.service = service
     }
-    
+
     func getLocations() async {
         guard let data = try? await service.getLocations(request: .locations) else {
             self.locations = []
