@@ -32,7 +32,7 @@ struct LocationView: View {
 extension LocationView {
     private var locationList: some View {
         List {
-            ForEach(viewModel.locations, id: \.self) { location in
+            ForEach(viewModel.locations) { location in
                 Link(
                     location.title ?? Strings.unknownTitle,
                     destination: URL.wikipedia(location: location)
