@@ -28,8 +28,9 @@ struct SearchLocationView: View {
     }
 }
 
-extension SearchLocationView {
-    private var searchLocationTextField: some View {
+private extension SearchLocationView {
+
+    var searchLocationTextField: some View {
         HStack {
             Images.magnifier
             TextField(Strings.searchLocation, text: $search)
@@ -38,7 +39,7 @@ extension SearchLocationView {
         .textFieldBackground()
     }
 
-    private var searchLocationList: some View {
+    var searchLocationList: some View {
         List {
             ForEach(viewModel.searchResults) { location in
                 Button(action: { didTapOnLocation(location) }) {
@@ -54,15 +55,15 @@ extension SearchLocationView {
         .listStyle(.plain)
     }
 
-    private func didTapOnLocation(_ location: SearchResult) {
+    func didTapOnLocation(_ location: SearchResult) {
         Task {
             do {
                 let result = try await viewModel.didTapOnLocation(location)
                 locations.append(result)
                 dismiss()
             } catch {
-                let result = Location(title: Strings.unknownLocation, subtitle: nil, lat: 0.0, long: 0.0)
-                locations.append(result)
+                let unknownLocation = Location(title: Strings.unknownLocation, subtitle: nil, lat: 0.0, long: 0.0)
+                locations.append(unknownLocation)
                 dismiss()
             }
         }

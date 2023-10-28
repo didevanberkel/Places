@@ -12,6 +12,7 @@ import SwiftUI
 final class LocationViewModel: ObservableObject {
 
     @Published var locations: [Location] = []
+    @Published var isError: Bool = false
 
     private let router: LocationRouterProtocol
     private let service: LocationServiceProtocol
@@ -24,15 +25,17 @@ final class LocationViewModel: ObservableObject {
         self.service = service
     }
 
+    /// Asynchronously retrieves locations from the location service and updates the locations property.
     func getLocations() async {
-        guard let data = try? await service.getLocations(request: .locations) else {
-            self.locations = []
-            return
+        do {
+            locations = try await service.getLocations(request: .locations)
+        } catch {
+            isError = true
         }
-        self.locations = data
     }
 
-    func search(for locations: Binding<[Location]>) -> SearchLocationView {
-        router.search(for: locations)
+    /// Creates and returns a `SearchLocationView`. It takes a binding, allowing the search view to interact with the underlying data.
+    func presentSearch(for locations: Binding<[Location]>) -> SearchLocationView {
+        router.presentSearch(for: locations)
     }
 }

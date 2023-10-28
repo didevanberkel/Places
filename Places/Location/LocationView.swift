@@ -12,15 +12,16 @@ struct LocationView: View {
 
     @ObservedObject var viewModel: LocationViewModel
 
-    @State private var showModal = false
+    @State private var showSearch = false
 
     var body: some View {
         NavigationStack {
             locationList
                 .navigationTitle(Strings.locations)
                 .navigationBarItems(trailing: addButton)
-                .sheet(isPresented: $showModal) {
-                    viewModel.search(for: $viewModel.locations)
+                .sheet(isPresented: $showSearch, content: searchContent)
+                .alert(isPresented: $viewModel.isError) {
+                    alertContent
                 }
         }
         .task {
@@ -29,25 +30,35 @@ struct LocationView: View {
     }
 }
 
-extension LocationView {
-    private var locationList: some View {
-        List {
-            ForEach(viewModel.locations) { location in
-                Link(
-                    location.title ?? Strings.unknownTitle,
-                    destination: URL.wikipedia(location: location)
-                )
-            }
+private extension LocationView {
+    var locationList: some View {
+        List(viewModel.locations) { location in
+            Link(
+                location.title ?? Strings.unknownTitle,
+                destination: URL.wikipedia(location: location)
+            )
         }
         .listStyle(.automatic)
     }
 
-    private var addButton: some View {
+    var addButton: some View {
         Button(action: {
-            self.showModal.toggle()
+            showSearch.toggle()
         }) {
             Images.add
         }
+    }
+
+    func searchContent() -> some View {
+        viewModel.presentSearch(for: $viewModel.locations)
+    }
+
+    var alertContent: Alert {
+        Alert(
+            title: Text(Strings.alertTitle),
+            message: Text(Strings.alertDescription),
+            dismissButton: .default(Text(Strings.ok))
+        )
     }
 }
 

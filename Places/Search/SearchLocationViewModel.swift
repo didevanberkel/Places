@@ -26,11 +26,13 @@ final class SearchLocationViewModel: NSObject, ObservableObject {
         self.localSearchCompleter.delegate = self
     }
 
+    /// Updates the search results based on the provided text.
     func update(with text: String) {
         localSearchCompleter.resultTypes = .pointOfInterest
         localSearchCompleter.queryFragment = text
     }
 
+    /// Performs an asynchronous operation to get the location coordinates for the given search result.
     func didTapOnLocation(_ location: SearchResult) async throws -> Location {
         guard let coordinates = try await service.getCoordinates(text: "\(location.title), \(location.subtitle)").first else { throw SearchError.coordinatesNotFound }
         return Location(
@@ -44,6 +46,7 @@ final class SearchLocationViewModel: NSObject, ObservableObject {
 
 extension SearchLocationViewModel: MKLocalSearchCompleterDelegate {
 
+    /// Responds to updates in search results from the MapKit local search completer.
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         searchResults = completer.results.compactMap {
             return .init(

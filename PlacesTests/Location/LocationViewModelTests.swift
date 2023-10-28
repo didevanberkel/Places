@@ -77,7 +77,7 @@ final class LocationViewModelTests: XCTestCase {
                 long: 200.0
             )
         ]
-        mockLocationRouter.searchResult = SearchLocationView(
+        mockLocationRouter.presentSearchResult = SearchLocationView(
             viewModel: SearchLocationViewModel(
                 localSearchCompleter: MKLocalSearchCompleter(),
                 service: SearchLocationService()
@@ -86,8 +86,8 @@ final class LocationViewModelTests: XCTestCase {
         )
         
         // When
-        let view = sut.search(for: .constant(locations))
-        
+        let view = sut.presentSearch(for: .constant(locations))
+
         // Then
         XCTAssertNotNil(view)
         XCTAssertEqual(view.locations[0].title, "title")

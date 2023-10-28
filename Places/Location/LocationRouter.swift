@@ -10,16 +10,18 @@ import SwiftUI
 
 @MainActor
 protocol LocationRouterProtocol {
-    func search(for locations: Binding<[Location]>) -> SearchLocationView
+    func presentSearch(for locations: Binding<[Location]>) -> SearchLocationView
 }
 
 struct LocationRouter: LocationRouterProtocol {
-    
-    func search(for locations: Binding<[Location]>) -> SearchLocationView {
-        SearchLocationView(
+
+    func presentSearch(for locations: Binding<[Location]>) -> SearchLocationView {
+        let localSearchCompleter = MKLocalSearchCompleter()
+        let searchLocationService = SearchLocationService()
+        return SearchLocationView(
             viewModel: SearchLocationViewModel(
-                localSearchCompleter: MKLocalSearchCompleter(),
-                service: SearchLocationService()
+                localSearchCompleter: localSearchCompleter,
+                service: searchLocationService
             ),
             locations: locations
         )

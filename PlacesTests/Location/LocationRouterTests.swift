@@ -32,8 +32,8 @@ final class LocationRouterTests: XCTestCase {
         ]
         
         // When
-        let view = sut.search(for: .constant(locations))
-        
+        let view = sut.presentSearch(for: .constant(locations))
+
         // Then
         XCTAssertNotNil(view)
         XCTAssertEqual(view.locations[0].title, "title")

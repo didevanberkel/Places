@@ -10,19 +10,19 @@ import SwiftUI
 
 final class MockLocationRouter: LocationRouterProtocol {
     
-    var searchCallsCount = 0
-    var searchCalled: Bool {
-        searchCallsCount > 0
+    var presentSearchCallsCount = 0
+    var presentSearchCalled: Bool {
+        presentSearchCallsCount > 0
     }
-    var searchReceivedLocations: Binding<[Location]>?
-    var searchResult: SearchLocationView?
-    
-    func search(for locations: Binding<[Location]>) -> SearchLocationView {
-        searchCallsCount += 1
-        searchReceivedLocations = locations
-        guard let searchResult = searchResult else {
+    var presentSearchReceivedLocations: Binding<[Location]>?
+    var presentSearchResult: SearchLocationView?
+
+    func presentSearch(for locations: Binding<[Location]>) -> SearchLocationView {
+        presentSearchCallsCount += 1
+        presentSearchReceivedLocations = locations
+        guard let presentSearchResult = presentSearchResult else {
             fatalError("SearchLocationView not defined")
         }
-        return searchResult
+        return presentSearchResult
     }
 }
