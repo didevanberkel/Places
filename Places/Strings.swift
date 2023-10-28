@@ -10,5 +10,6 @@ import Foundation
 struct Strings {
     static let locations = String(localized: "locations")
     static let searchLocation = String(localized: "searchLocation")
-    static let unknownName = String(localized: "unknownName")
+    static let unknownLocation = String(localized: "unknownLocation")
+    static let unknownTitle = String(localized: "unknownTitle")
 }

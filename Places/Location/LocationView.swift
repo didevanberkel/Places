@@ -16,23 +16,30 @@ struct LocationView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(viewModel.locations, id: \.self) { location in
-                    Link(
-                        location.title ?? Strings.unknownName,
-                        destination: URL.wikipedia(location: location)
-                    )
+            locationList
+                .navigationTitle(Strings.locations)
+                .navigationBarItems(trailing: addButton)
+                .sheet(isPresented: $showModal) {
+                    viewModel.search(for: $viewModel.locations)
                 }
-            }
-            .navigationTitle(Strings.locations)
-            .navigationBarItems(trailing: addButton)
-            .sheet(isPresented: $showModal) {
-                viewModel.search(for: $viewModel.locations)
-            }
         }
         .task {
             await viewModel.getLocations()
         }
+    }
+}
+
+extension LocationView {
+    private var locationList: some View {
+        List {
+            ForEach(viewModel.locations, id: \.self) { location in
+                Link(
+                    location.title ?? Strings.unknownTitle,
+                    destination: URL.wikipedia(location: location)
+                )
+            }
+        }
+        .listStyle(.automatic)
     }
 
     private var addButton: some View {

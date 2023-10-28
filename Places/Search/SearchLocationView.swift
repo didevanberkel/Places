@@ -26,18 +26,6 @@ struct SearchLocationView: View {
             viewModel.update(with: search)
         }
     }
-
-    private func didTapOnLocation(_ location: SearchResult) {
-        Task {
-            do {
-                let loc = try await viewModel.didTapOnLocation(location)
-                locations.append(loc)
-                dismiss()
-            } catch {
-                // to do: error
-            }
-        }
-    }
 }
 
 extension SearchLocationView {
@@ -65,11 +53,37 @@ extension SearchLocationView {
         }
         .listStyle(.plain)
     }
+
+    private func didTapOnLocation(_ location: SearchResult) {
+        Task {
+            do {
+                let result = try await viewModel.didTapOnLocation(location)
+                locations.append(result)
+                dismiss()
+            } catch {
+                let result = Location(title: Strings.unknownLocation, subtitle: nil, lat: 0.0, long: 0.0)
+                locations.append(result)
+                dismiss()
+            }
+        }
+    }
 }
 
 #Preview {
     SearchLocationView(
-        viewModel: SearchLocationViewModel(localSearchCompleter: MKLocalSearchCompleter(), service: SearchLocationService()),
-        locations: .constant([Location(title: "Title", subtitle: "Subtitle", lat: 123.0, long: 1234.0)])
+        viewModel: SearchLocationViewModel(
+            localSearchCompleter: MKLocalSearchCompleter(),
+            service: SearchLocationService()
+        ),
+        locations: .constant(
+            [
+                Location(
+                    title: "Title",
+                    subtitle: "Subtitle",
+                    lat: 123.0,
+                    long: 1234.0
+                )
+            ]
+        )
     )
 }
