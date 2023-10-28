@@ -27,13 +27,18 @@ class SearchLocationViewModel: NSObject, ObservableObject {
     }
 
     func update(with text: String) {
-        localSearchCompleter.resultTypes = .pointOfInterest
+        localSearchCompleter.resultTypes = .address
         localSearchCompleter.queryFragment = text
     }
 
     func didTapOnLocation(_ location: SearchResult) async throws -> Location {
         guard let coordinates = try await service.getCoordinates(text: "\(location.title), \(location.subtitle)").first else { throw SearchError.coordinatesNotFound }
-        return Location(name: location.title, subtitle: location.subtitle, lat: coordinates.latitude, long: coordinates.longitude)
+        return Location(
+            title: location.title,
+            subtitle: location.subtitle,
+            lat: coordinates.latitude,
+            long: coordinates.longitude
+        )
     }
 }
 

@@ -10,8 +10,15 @@ struct Locations: Codable {
 }
 
 struct Location: Hashable, Codable {
-    let name: String?
+    let title: String?
     let subtitle: String?
     let lat: Double
     let long: Double
+
+    enum CodingKeys: String, CodingKey {
+        case title = "name"
+        case subtitle
+        case lat
+        case long
+    }
 }
