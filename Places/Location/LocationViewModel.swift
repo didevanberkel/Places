@@ -6,15 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor
 class LocationViewModel: ObservableObject {
 
     @Published var locations: [Location] = []
 
+    private let router: LocationRouterProtocol
     private let service: LocationServiceProtocol
 
-    init(service: LocationServiceProtocol) {
+    init(
+        router: LocationRouterProtocol,
+        service: LocationServiceProtocol
+    ) {
+        self.router = router
         self.service = service
     }
     
@@ -24,5 +30,9 @@ class LocationViewModel: ObservableObject {
             return
         }
         self.locations = data
+    }
+
+    func search(for locations: Binding<[Location]>) -> SearchLocationView {
+        router.search(for: locations)
     }
 }

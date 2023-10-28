@@ -27,7 +27,7 @@ class SearchLocationViewModel: NSObject, ObservableObject {
     }
 
     func update(with text: String) {
-        localSearchCompleter.resultTypes = .address
+        localSearchCompleter.resultTypes = .pointOfInterest
         localSearchCompleter.queryFragment = text
     }
 

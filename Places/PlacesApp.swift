@@ -11,7 +11,10 @@ import SwiftUI
 struct PlacesApp: App {
 
     var body: some Scene {
-        let locationViewModel = LocationViewModel(service: LocationService())
+        let locationViewModel = LocationViewModel(
+            router: LocationRouter(),
+            service: LocationService()
+        )
         WindowGroup {
             LocationView(viewModel: locationViewModel)
         }
