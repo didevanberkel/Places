@@ -27,6 +27,7 @@ final class SearchLocationViewModelTests: XCTestCase {
 
     override func tearDown() async throws {
         mockLocalSearchCompleter = nil
+        mockSearchLocationService = nil
         sut = nil
     }
 
@@ -50,7 +51,7 @@ final class SearchLocationViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(mockSearchLocationService.getCoordinatesCalled)
         XCTAssertEqual(mockSearchLocationService.getCoordinatesCallsCount, 1)
-        XCTAssertEqual(location?.name, "Concertgebouw")
+        XCTAssertEqual(location?.title, "Concertgebouw")
         XCTAssertEqual(location?.subtitle, "Concertgebouwplein 10, 1071 LN, Amsterdam, Netherlands")
     }
 
@@ -65,6 +66,6 @@ final class SearchLocationViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(mockSearchLocationService.getCoordinatesCalled)
         XCTAssertEqual(mockSearchLocationService.getCoordinatesCallsCount, 1)
-        XCTAssertEqual(location, nil)
+        XCTAssertNil(location)
     }
 }
