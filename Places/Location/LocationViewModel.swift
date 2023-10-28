@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @MainActor
-class LocationViewModel: ObservableObject {
+final class LocationViewModel: ObservableObject {
 
     @Published var locations: [Location] = []
 
@@ -25,7 +25,7 @@ class LocationViewModel: ObservableObject {
     }
     
     func getLocations() async {
-        guard let data = try? await service.getLocations() else {
+        guard let data = try? await service.getLocations(request: .locations) else {
             self.locations = []
             return
         }

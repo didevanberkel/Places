@@ -13,7 +13,7 @@ struct PlacesApp: App {
     var body: some Scene {
         let locationViewModel = LocationViewModel(
             router: LocationRouter(),
-            service: LocationService()
+            service: LocationService(apiRequest: APIRequest())
         )
         WindowGroup {
             LocationView(viewModel: locationViewModel)

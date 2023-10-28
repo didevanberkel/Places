@@ -55,7 +55,7 @@ extension LocationView {
     LocationView(
         viewModel: LocationViewModel(
             router: LocationRouter(),
-            service: LocationService()
+            service: LocationService(apiRequest: APIRequest())
         )
     )
 }

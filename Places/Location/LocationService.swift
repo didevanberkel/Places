@@ -7,26 +7,28 @@
 
 import Foundation
 
-enum APIError: Error {
-    case requestError, statusCodeError, decodeError
+enum APIError: Error, Equatable {
+    case requestError, statusCodeError(Int), decodeError, unknownError
 }
 
 protocol LocationServiceProtocol {
-    func getLocations() async throws -> [Location]
+    func getLocations(request: URL) async throws -> [Location]
 }
 
 struct LocationService: LocationServiceProtocol {
-
-    func getLocations() async throws -> [Location] {
-        guard let (data, response) = try? await URLSession.shared.data(from: .locations) else {
-            throw APIError.requestError
+    
+    let apiRequest: APIRequestProtocol
+    
+    func getLocations(request: URL) async throws -> [Location] {
+        let result = try await apiRequest.get(request: request)
+        switch result {
+        case .success(let data):
+            guard let result = try? JSONDecoder().decode(Locations.self, from: data) else {
+                throw APIError.decodeError
+            }
+            return result.locations
+        case .failure(let error):
+            throw error
         }
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw APIError.statusCodeError
-        }
-        guard let result = try? JSONDecoder().decode(Locations.self, from: data) else {
-            throw APIError.decodeError
-        }
-        return result.locations
     }
 }

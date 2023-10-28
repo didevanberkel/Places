@@ -8,8 +8,6 @@
 @testable import Places
 import MapKit
 
-extension SearchLocationServiceProtocol { }
-
 final class MockSearchLocationService: SearchLocationServiceProtocol {
 
     var getCoordinatesCallsCount = 0

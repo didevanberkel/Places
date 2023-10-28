@@ -63,6 +63,7 @@ final class LocationViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(mockLocationService.getLocationsCalled)
         XCTAssertEqual(mockLocationService.getLocationsCallsCount, 1)
+        XCTAssertEqual(mockLocationService.getLocationsReceivedRequest?.absoluteString, "https://raw.githubusercontent.com/abnamrocoesd/assignment-ios/main/locations.json")
         XCTAssertTrue(sut.locations.isEmpty)
     }
 

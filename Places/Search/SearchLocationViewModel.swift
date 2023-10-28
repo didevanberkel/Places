@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 
 @MainActor
-class SearchLocationViewModel: NSObject, ObservableObject {
+final class SearchLocationViewModel: NSObject, ObservableObject {
 
     @Published var searchResults: [SearchResult] = []
 

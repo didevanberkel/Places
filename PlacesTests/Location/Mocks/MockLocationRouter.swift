@@ -8,8 +8,6 @@
 @testable import Places
 import SwiftUI
 
-extension LocationRouterProtocol { }
-
 final class MockLocationRouter: LocationRouterProtocol {
     
     var searchCallsCount = 0
