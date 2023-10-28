@@ -27,9 +27,16 @@ struct SearchLocationView: View {
         }
     }
 
-    private func didTapOnCompletion(_ completion: Location) {
-        locations.append(completion)
-        dismiss()
+    private func didTapOnLocation(_ location: SearchResult) {
+        Task {
+            do {
+                let loc = try await viewModel.didTapOnLocation(location)
+                locations.append(loc)
+                dismiss()
+            } catch {
+                // to do: error
+            }
+        }
     }
 }
 
@@ -45,13 +52,13 @@ extension SearchLocationView {
 
     private var searchLocationList: some View {
         List {
-            ForEach(viewModel.locations, id: \.self) { location in
-                Button(action: { didTapOnCompletion(location) }) {
+            ForEach(viewModel.searchResults, id: \.self) { location in
+                Button(action: { didTapOnLocation(location) }) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(location.name ?? "")
+                        Text(location.title)
                             .font(.headline)
                             .fontDesign(.rounded)
-                        Text(location.subtitle ?? "")
+                        Text(location.subtitle)
                     }
                 }
             }
