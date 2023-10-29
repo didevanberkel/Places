@@ -42,8 +42,8 @@ final class LocationViewModelTests: XCTestCase {
         ]
         
         // When
-        await sut.getLocations()
-        
+        await sut.load()
+
         // Then
         XCTAssertTrue(mockLocationService.getLocationsCalled)
         XCTAssertEqual(mockLocationService.getLocationsCallsCount, 1)
@@ -58,8 +58,8 @@ final class LocationViewModelTests: XCTestCase {
         mockLocationService.getLocationsResult = nil
         
         // When
-        await sut.getLocations()
-        
+        await sut.load()
+
         // Then
         XCTAssertTrue(mockLocationService.getLocationsCalled)
         XCTAssertEqual(mockLocationService.getLocationsCallsCount, 1)

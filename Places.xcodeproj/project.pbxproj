@@ -185,12 +185,13 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		AA3C9FA82AED460000BDAAAE /* Service */ = {
+		AA3C9FA82AED460000BDAAAE /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				AA3C9FA62AED45F900BDAAAE /* APIRequest.swift */,
+				AA22F4382AE985BD00587F46 /* Extensions */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		AAB5DA3F2AEE66BE007F08A8 /* Loading */ = {
@@ -209,6 +210,37 @@
 				AAB5DA412AEE67A4007F08A8 /* ErrorView.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		AAB5DA442AEE7956007F08A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAC264D22AEA7FA400B8627A /* Images.swift */,
+				AAC264D02AEA7ED200B8627A /* Strings.swift */,
+				AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */,
+				AAC264CD2AEA7D6B00B8627A /* Localizable.xcstrings */,
+				AAD8BB062AE944FA008FE3D7 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AAB5DA452AEE797D007F08A8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AAC264D62AEAA8AE00B8627A /* ViewModifiers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		AAB5DA462AEE7A0C007F08A8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				AAB5DA402AEE6799007F08A8 /* Error */,
+				AAB5DA3F2AEE66BE007F08A8 /* Loading */,
+				AAD8BB2A2AE946F2008FE3D7 /* Location */,
+				AA22F43B2AE988B900587F46 /* Search */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		AAC264D62AEAA8AE00B8627A /* ViewModifiers */ = {
@@ -250,19 +282,11 @@
 		AAD8BAFF2AE944F7008FE3D7 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				AAD8BB2A2AE946F2008FE3D7 /* Location */,
-				AA22F43B2AE988B900587F46 /* Search */,
-				AAB5DA402AEE6799007F08A8 /* Error */,
-				AAB5DA3F2AEE66BE007F08A8 /* Loading */,
-				AA3C9FA82AED460000BDAAAE /* Service */,
-				AA22F4382AE985BD00587F46 /* Extensions */,
-				AAC264D62AEAA8AE00B8627A /* ViewModifiers */,
+				AAB5DA462AEE7A0C007F08A8 /* Modules */,
 				AAD8BB002AE944F7008FE3D7 /* PlacesApp.swift */,
-				AAD8BB062AE944FA008FE3D7 /* Preview Content */,
-				AAD8BB042AE944FA008FE3D7 /* Assets.xcassets */,
-				AAC264CD2AEA7D6B00B8627A /* Localizable.xcstrings */,
-				AAC264D22AEA7FA400B8627A /* Images.swift */,
-				AAC264D02AEA7ED200B8627A /* Strings.swift */,
+				AAB5DA442AEE7956007F08A8 /* Resources */,
+				AA3C9FA82AED460000BDAAAE /* Services */,
+				AAB5DA452AEE797D007F08A8 /* UI */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -630,7 +654,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Places/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Places/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 6M7C6U48HK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -659,7 +683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Places/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Places/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 6M7C6U48HK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
