@@ -50,22 +50,6 @@
         }
       }
     },
-    "ok" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ok"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ok"
-          }
-        }
-      }
-    },
     "searchLocation" : {
       "extractionState" : "manual",
       "localizations" : {

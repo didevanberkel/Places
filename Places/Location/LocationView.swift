@@ -15,17 +15,16 @@ struct LocationView: View {
     @State private var showSearch = false
 
     var body: some View {
-        NavigationStack {
-            locationList
-                .navigationTitle(Strings.locations)
-                .navigationBarItems(trailing: addButton)
-                .sheet(isPresented: $showSearch, content: searchContent)
-                .alert(isPresented: $viewModel.isError) {
-                    alertContent
-                }
+        LoadingView(source: viewModel) {
+            NavigationStack {
+                locationList
+                    .navigationTitle(Strings.locations)
+                    .navigationBarItems(trailing: addButton)
+                    .sheet(isPresented: $showSearch, content: searchContent)
+            }
         }
         .task {
-            await viewModel.getLocations()
+            await viewModel.load()
         }
     }
 }
@@ -51,14 +50,6 @@ private extension LocationView {
 
     func searchContent() -> some View {
         viewModel.presentSearch(for: $viewModel.locations)
-    }
-
-    var alertContent: Alert {
-        Alert(
-            title: Text(Strings.alertTitle),
-            message: Text(Strings.alertDescription),
-            dismissButton: .default(Text(Strings.ok))
-        )
     }
 }
 

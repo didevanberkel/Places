@@ -11,8 +11,8 @@ import SwiftUI
 @MainActor
 final class LocationViewModel: ObservableObject {
 
+    @Published private(set) var state: LoadingState = .idle
     @Published var locations: [Location] = []
-    @Published var isError: Bool = false
 
     private let router: LocationRouterProtocol
     private let service: LocationServiceProtocol
@@ -26,16 +26,25 @@ final class LocationViewModel: ObservableObject {
     }
 
     /// Asynchronously retrieves locations from the location service and updates the locations property.
-    func getLocations() async {
+    private func getLocations() async {
+        state = .loading
         do {
-            locations = try await service.getLocations(request: .locations)
+            self.locations = try await service.getLocations(request: .locations)
+            state = .success
         } catch {
-            isError = true
+            state = .error
         }
     }
 
     /// Creates and returns a `SearchLocationView`. It takes a binding, allowing the search view to interact with the underlying data.
     func presentSearch(for locations: Binding<[Location]>) -> SearchLocationView {
         router.presentSearch(for: locations)
+    }
+}
+
+extension LocationViewModel: LoadingProtocol {
+
+    func load() async {
+        await getLocations()
     }
 }
