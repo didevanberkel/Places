@@ -37,6 +37,7 @@ private extension LocationView {
                 destination: URL.wikipedia(location: location)
             )
         }
+        .foregroundStyle(Colors.placesGreen)
         .listStyle(.automatic)
     }
 
@@ -45,6 +46,8 @@ private extension LocationView {
             showSearch.toggle()
         }) {
             Images.add
+                .renderingMode(.template)
+                .foregroundColor(Colors.placesGreen)
         }
     }
 
